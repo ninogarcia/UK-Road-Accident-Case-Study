@@ -41,6 +41,8 @@ The dataset contains an array of information, ranging from geographic locations 
 
 Read the CSV file
 ```python
+import pandas as pd
+
 df = pd.read_csv(r'...\data.csv')
 ```
 &nbsp;
