@@ -84,16 +84,13 @@ df.to_csv('cleaned_data.csv', index=False)
 
 #### USING MySQL 
 
-Check the data
+-- Check the data
 ```sql
-SELECT 
-	*
-FROM
-	accidents;
+SELECT * FROM accidents;
 ```
 &nbsp;
 
-Total number of accidents
+-- Total number of accidents
 ```sql
 SELECT
 	COUNT(ID) AS total_accidents
@@ -104,6 +101,7 @@ FROM
 
 
 -- What are the number of casualties in each day of the week? Sort them in descending order.
+```sql
 SELECT
   DATE_FORMAT(Accident_Date, '%W') AS Day_of_Week,
   SUM(Number_of_Casualties) AS Total_Casualties
@@ -113,9 +111,13 @@ GROUP BY
   Day_of_Week
 ORDER BY
   Total_Casualties DESC;
+```
+&nbsp;
+
+
 
 -- What are the number of casualties in each  month? 
-
+```sql
 SELECT 
     DATE_FORMAT(Accident_Date, '%Y-%m') AS Month, 
     SUM(Number_of_Casualties) AS Total_Casualties
@@ -125,10 +127,11 @@ GROUP BY
     Month
 ORDER BY 
     Month ASC;
-
+```
+&nbsp;
 
 -- Which geographic areas have the highest occurrence of accidents?
-
+```sql
 SELECT 
     District_Area, 
     SUM(Number_of_Casualties) AS Total_Casualties
@@ -139,9 +142,11 @@ GROUP BY
 ORDER BY 
     Total_Casualties DESC
 LIMIT 10;
-
+```
+&nbsp;
 
 -- What are the most frequent weather conditions associated with accidents?
+```sql
 SELECT 
     Weather_Conditions, 
     COUNT(*) AS Num_Accidents
@@ -151,9 +156,11 @@ GROUP BY
     Weather_Conditions
 ORDER BY 
     Num_Accidents DESC;
+```
+&nbsp;
 
 -- What are the most common types of vehicles involved in accidents?
-
+```sql
 SELECT 
     Vehicle_Type, 
     COUNT(*) AS Num_Accidents
@@ -163,8 +170,11 @@ GROUP BY
     Vehicle_Type
 ORDER BY 
     Num_Accidents DESC;
+```
+&nbsp;
 
 -- How do the number of casualties vary across different types of accidents?
+```sql
 SELECT 
     Accident_Severity, 
     Road_Type, 
@@ -176,9 +186,11 @@ GROUP BY
     Accident_Severity, Road_Type
 ORDER BY 
     Accident_Severity ASC, Num_Casualties DESC;
-
+```
+&nbsp;
 
 -- Quantity and ratio of severity. 
+```sql
 SELECT 
 	accident_severity,
 	COUNT(accident_severity) AS total_severity,
@@ -187,11 +199,12 @@ from
 	accidents
 GROUP BY accident_severity
 ORDER BY 3 DESC;
-
-
+```
+&nbsp;
 
 
 -- Verify if most accidents happens during the night or day.
+```sql
 SELECT 
     Light_Conditions, 
     COUNT(*) AS Num_Accidents
@@ -203,3 +216,6 @@ GROUP BY
     Light_Conditions
 ORDER BY 
     Num_Accidents DESC;
+```
+&nbsp;
+
