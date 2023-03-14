@@ -75,7 +75,7 @@ df['Latitude'] = df['Latitude'].replace('NA', pd.NA)
 
 Drop rows with NaN
 ```python
-df = df.dropna(subset=['Longitude', 'Latitude', 'Road_Surface_Conditions', 'Weather_Conditions'])
+df = df.dropna(subset=['Longitude', 'Latitude', 'Road_Type', 'Road_Surface_Conditions', 'Weather_Conditions'])
 ```
 &nbsp;
 
